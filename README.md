@@ -1,34 +1,34 @@
 ## Bugs
 * * *
 * $this不能在静态上下文使用
-    > $this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
+  > $this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
 
-    <p>不规范的示例:</p>
+  <p>不规范的示例:</p>
 
-    <pre><code>
-    class Clazz {
-      pubilc $name = null;  // instance variable
+  <pre><code>
+  class Clazz {
+    pubilc $name = null;  // instance variable
 
-      public static function foo(){
-        if ($this->name != null) {
-          // ...
-        }
+    public static function foo(){
+      if ($this->name != null) {
+        // ...
       }
     }
-    </code></pre>
-    <p>合理解决示例:</p>
+  }
+  </code></pre>
+  <p>合理解决示例:</p>
 
-    <pre><code>
-    class Clazz {
-      pubilc $name = null;  // instance variable
+  <pre><code>
+  class Clazz {
+    pubilc $name = null;  // instance variable
 
-      public static function foo($nameParam){
-        if ($nameParam != null) {
-          // ...
-        }
+    public static function foo($nameParam){
+      if ($nameParam != null) {
+        // ...
       }
     }
-   </code></pre>  
+  }
+  </code></pre>  
 * 对象不能创建了就立马丢弃而没有使用它
 
   <p>不规范的示例:</p>
