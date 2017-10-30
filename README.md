@@ -64,7 +64,7 @@
       function foo($a) {
         if ($a == 5) {
           goto error;
-        } else {
+        } else { 
           // do the job
         }
         return;
