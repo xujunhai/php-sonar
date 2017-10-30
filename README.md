@@ -9,11 +9,7 @@
     class Clazz {
       pubilc $name = null;  // instance variable
 
-      public static function foo(){
-        if ($this->name != null) {
-          // ...
-        }
-      }
+    
     }
     </code></pre>
     <p>合理解决示例:</p>
