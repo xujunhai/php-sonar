@@ -1,11 +1,10 @@
 ## Bugs
 * * *
-* $this不能在静态上下文使用.
-    > $this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
+* $this不能在静态上下文使用。
+    > $this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
 
     <p>不规范的示例:</p>
-    <pre>
-    class Clazz {
+    <pre><code>class Clazz {
       pubilc $name = null;  // instance variable
 
       public static function foo(){
@@ -14,11 +13,10 @@
         }
       }
     }
-    </pre>
+    </code></pre>
 
     <p>合理解决示例:</p>
-    <pre>
-    class Clazz {
+    <pre><code>class Clazz {
       pubilc $name = null;  // instance variable
 
       public static function foo($nameParam){
@@ -27,7 +25,7 @@
         }
       }
     }
-    </pre>
+    </code></pre>
 
 * 对象不能创建了就立马丢弃而没有使用它.
   >
