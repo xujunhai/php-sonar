@@ -4,7 +4,7 @@
 >$this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
 
   <p>不规范的示例:</p>
-  ```php
+  ```java
     class Clazz {
       pubilc $name = null;  // instance variable
 
