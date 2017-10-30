@@ -12,7 +12,7 @@
         if ($this->name != null) {
           // ...
         }
-      }
+      } //end
     }</code></pre>
     <p>合理解决示例:</p>
     <pre><code>
