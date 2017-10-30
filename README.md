@@ -1,9 +1,8 @@
-# php-sonar
-
 ## Bugs
 * * *
-* "$this"不能在静态上下文使用
-    > "$this"指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
+* $this不能在静态上下文使用
+
+    > $this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
 
     <p>不规范的示例:</p>
     <pre><code>
@@ -32,22 +31,24 @@
     </code></pre>
 
 * 对象不能创建了就立马丢弃而没有使用它
-    
-    <p>不规范的示例:</p>
-    <pre><code>
-    if ($x < 0) {
-    new foo;  // Noncompliant
-    }
-    </code></pre>
+  >
 
-    <p>合理解决示例:</p>
-    <pre><code>
-    $var = null;
-    if ($x < 0) {
+  <p>不规范的示例:</p>
+  <pre><code>
+  if ($x < 0) {
+    new foo;  // Noncompliant
+  }
+  </code></pre>
+
+  <p>合理解决示例:</p>
+  <pre><code>
+  $var = null;
+  if ($x < 0) {
     $var = new foo;
-    }
-    </code></pre>
+  }
+  </code></pre>
 * 二进制操作符两边不能使用相同表达式
+  >
 
   <p>不规范的示例:</p>
   <pre><code>
@@ -108,7 +109,7 @@
   }
   </code></pre>
 *  用短路逻辑来防止空指针解引用在条件判断语句中
-  
+
   <p>不规范的示例:</p>
   <pre><code>
   if ($obj == null && $obj->isOpen()) {
@@ -131,7 +132,8 @@
   }
   </code></pre>
 * 变量不要 "自赋值"
-  
+  >
+
   <p>不规范的示例:</p>
   <pre><code>
   public function setName($name) {
@@ -234,27 +236,23 @@
 
   class Toy
   {  
-
-      public static function status()
-      {
-          self::getStatus();  // Noncompliant; will always print "Sticks are fun!" even when called from a subclass which overrides this method;
-      }
-
-      protected static function getStatus()
-      {
-          echo "Sticks are fun!";
-      }
+    public static function status()
+    {
+      self::getStatus();  // Noncompliant; will always print "Sticks are fun!" even when called from a subclass which overrides this method;
+    }
+    protected static function getStatus()
+    {
+      echo "Sticks are fun!";
+    }
   }
 
   class Ball extends Toy
   {
-
-      protected static function getStatus()  // Doesn't actually get called
-      {  
-          echo "Balls are fun!";
-      }
+    protected static function getStatus()  // Doesn't actually get called
+    {  
+      echo "Balls are fun!";
+    }
   }
-
   $myBall = new Ball();
   $myBall::status();  // Prints "Sticks are fun!"
   </code></pre>
@@ -263,14 +261,14 @@
   <pre><code>
   class A
   {
-      private static $somevar = "hello";
-      const CONSTANT = 42;
+    private static $somevar = "hello";
+    const CONSTANT = 42;
 
-      private static function foo()
-      {
-          $var = self::$somevar . self::CONSTANT;  // Should be OK
-          self::foo();                               // Should be OK
-      }
+    private static function foo()
+    {
+        $var = self::$somevar . self::CONSTANT;  // Should be OK
+        self::foo();                               // Should be OK
+    }
   }
   </code></pre>
 * * *
@@ -361,16 +359,16 @@
   }
   </code></pre>
 * 控制结构要用花括号
- > 省略花括号可能会导致误导，并可能导致在维护过程中引入错误。
+  > 省略花括号可能会导致误导，并可能导致在维护过程中引入错误。
 
- <pre><code>
- if (condition)  // Noncompliant
+  <pre><code>
+  if (condition)  // Noncompliant
    executeSomething();
 
- if (condition) { //Compliant
+  if (condition) { //Compliant
    executeSomething();
- }
- </code></pre>
+  }
+  </code></pre>
 * 常量名称必须完全遵守一个命名约定
   > 共享编码约定让团队有效协作。此规则检查所有常量名称是否与提供的正则表达式匹配,默默认正则 ^[A-Z][A-Z0-9]\(\_[A-Z0-9]+)$
 
