@@ -6,14 +6,13 @@
     <p>不规范的示例:</p>
     <pre><code>
     class Clazz {
-        pubilc $name = null;  // instance variable
+    pubilc $name = null;  // instance variable
 
-        public static function foo(){
-            if ($this->name != null) {
-              // ...
-            }
+    public static function foo(){
+        if ($this->name != null) {
+          // ...
         }
-    }
+    }}
     </code></pre>
 
     <p>合理解决示例:</p>
