@@ -5,13 +5,15 @@
     > $this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
 
     <p>不规范的示例:</p>
-    <pre><code>
-    class Clazz {
+    <pre><code>class Clazz {
       pubilc $name = null;  // instance variable
 
-    
-    }
-    </code></pre>
+      public static function foo(){
+        if ($this->name != null) {
+          // ...
+        }
+      }
+    }</code></pre>
     <p>合理解决示例:</p>
     <pre><code>
     class Clazz {
