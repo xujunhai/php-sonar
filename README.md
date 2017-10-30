@@ -1,30 +1,28 @@
 ## Bugs
 * * *
 * $this不能在静态上下文使用
-    <p>不规范的示例:</p>
-    <pre><code>
-    class Clazz {
-        pubilc $name = null;  // instance variable
+<p>不规范的示例:</p>
+<pre><code>
+class Clazz {
+    pubilc $name = null;  // instance variable
 
-        public static function foo(){
-          if ($this->name != null) {
-         }
+    public static function foo(){
+      if ($this->name != null) {
+     }
+    }
+}
+</code></pre>
+<p>合理解决示例:</p>
+<pre><code>
+class Clazz {
+    pubilc $name = null;  // instance variable
+
+    public static function foo($nameParam){
+        if ($nameParam != null) {
         }
     }
-    </code></pre>
-
-    <p>合理解决示例:</p>
-    <pre><code>
-    class Clazz {
-        pubilc $name = null;  // instance variable
-
-        public static function foo($nameParam){
-            if ($nameParam != null) {
-            }
-        }
-    }
-    </code></pre>
-
+}
+</code></pre>
 * 对象不能创建了就立马丢弃而没有使用它
   <p>不规范的示例:</p>
   <pre><code>
