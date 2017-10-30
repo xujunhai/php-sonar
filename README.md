@@ -1,7 +1,6 @@
 ## Bugs
 * * *
-* $this不能在静态上下文使用
-
+* $this不能在静态上下文使用.
     > $this指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
 
     <p>不规范的示例:</p>
@@ -30,7 +29,7 @@
     }
     </code></pre>
 
-* 对象不能创建了就立马丢弃而没有使用它
+* 对象不能创建了就立马丢弃而没有使用它.
   >
 
   <p>不规范的示例:</p>
@@ -108,7 +107,7 @@
     return;
   }
   </code></pre>
-*  用短路逻辑来防止空指针解引用在条件判断语句中
+* 用短路逻辑来防止空指针解引用在条件判断语句中.
 
   <p>不规范的示例:</p>
   <pre><code>
@@ -238,11 +237,11 @@
   {  
     public static function status()
     {
-      self::getStatus();  // Noncompliant; will always print "Sticks are fun!" even when called from a subclass which overrides this method;
+        self::getStatus();  // Noncompliant; will always print "Sticks are fun!" even when called from a subclass which overrides this method;
     }
     protected static function getStatus()
     {
-      echo "Sticks are fun!";
+        echo "Sticks are fun!";
     }
   }
 
@@ -250,7 +249,7 @@
   {
     protected static function getStatus()  // Doesn't actually get called
     {  
-      echo "Balls are fun!";
+        echo "Balls are fun!";
     }
   }
   $myBall = new Ball();
