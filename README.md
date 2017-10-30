@@ -3,7 +3,6 @@
 ## Bugs
 * * *
 * "$this"不能在静态上下文使用
-
     > "$this"指当前类实例.但是静态方法可以被访问不需要实例化类,使用$this在静态上下文将在运行时引起一个致命错误。
 
     <p>不规范的示例:</p>
@@ -33,24 +32,22 @@
     </code></pre>
 
 * 对象不能创建了就立马丢弃而没有使用它
-  >
-
-  <p>不规范的示例:</p>
-  <pre><code>
-  if ($x < 0) {
+    
+    <p>不规范的示例:</p>
+    <pre><code>
+    if ($x < 0) {
     new foo;  // Noncompliant
-  }
-  </code></pre>
+    }
+    </code></pre>
 
-  <p>合理解决示例:</p>
-  <pre><code>
-  $var = null;
-  if ($x < 0) {
+    <p>合理解决示例:</p>
+    <pre><code>
+    $var = null;
+    if ($x < 0) {
     $var = new foo;
-  }
-  </code></pre>
+    }
+    </code></pre>
 * 二进制操作符两边不能使用相同表达式
-  >
 
   <p>不规范的示例:</p>
   <pre><code>
@@ -111,8 +108,7 @@
   }
   </code></pre>
 *  用短路逻辑来防止空指针解引用在条件判断语句中
-  >
-
+  
   <p>不规范的示例:</p>
   <pre><code>
   if ($obj == null && $obj->isOpen()) {
@@ -135,8 +131,7 @@
   }
   </code></pre>
 * 变量不要 "自赋值"
-  >
-
+  
   <p>不规范的示例:</p>
   <pre><code>
   public function setName($name) {
